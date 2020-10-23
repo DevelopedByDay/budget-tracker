@@ -50,7 +50,7 @@ self.addEventListener("fetch", function(event) {
   
       return;
 }
-  
+// deploy data   
 event.respondWith(
       fetch(event.request).catch(function() {
         return caches.match(event.request).then(function(response) {
