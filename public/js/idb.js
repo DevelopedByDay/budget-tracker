@@ -26,15 +26,15 @@ request.onerror = function(event) {
   
 function saveRecord(record) {
     const transaction = db.transaction(["pending"], "readwrite");
-    const store = transaction.objectStore("pending");
+    const save = transaction.objectStore("pending");
     
-    store.add(record);
+    save.add(record);
 }
   
 function checkDatabase() {
     const transaction = db.transaction(["pending"], "readwrite");
-    const store = transaction.objectStore("pending");
-    const getAll = store.getAll();
+    const check = transaction.objectStore("pending");
+    const getAll = check.getAll();
   // calls function to grab data and store data
     getAll.onsuccess = function() {
       if(getAll.result.length > 0) {
@@ -51,8 +51,8 @@ function checkDatabase() {
         })
         .then(() => {
           const transaction = db.transaction(["pending"], "readwrite");
-          const store = transaction.objectStore("pending");
-          store.clear();
+          const save = transaction.objectStore("pending");
+          save.clear();
         });
       }
     };
